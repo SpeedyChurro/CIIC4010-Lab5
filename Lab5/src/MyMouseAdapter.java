@@ -156,15 +156,15 @@ public class MyMouseAdapter extends MouseAdapter {
 
 							//On the left column and on the top row... do nothing	
 
-						} 
-
 						
 
 						
 
-						if ((gridX == 0 ) || (gridY < 0)){
+						
 
-                             for ( int i = 0; i < 9; i++){
+						if ((gridX == 0) && (gridY != 0 && gridY != 10)){
+
+                             for ( int i = 0; i < 10; i++){
 
                                  Color newColor = null;
 
@@ -204,7 +204,7 @@ public class MyMouseAdapter extends MouseAdapter {
 
                          
 
-                                 myPanel.colorArray[i + 1][myPanel.mouseDownGridY] = newColor;
+                                 myPanel.colorArray[i][gridY] = newColor;
 
                                  myPanel.repaint();
 
@@ -231,9 +231,9 @@ public class MyMouseAdapter extends MouseAdapter {
 
 						
 
-						if ((gridX < 0 ) || (gridY == 0)){
+						else if ((gridX != 0) && gridY == 0){
 
-                             for ( int j = 0; j < 9; j++){
+                             for ( int j = 0; j < 10; j++){
 
                                  Color newColor = null;
 
@@ -273,7 +273,7 @@ public class MyMouseAdapter extends MouseAdapter {
 
                          
 
-                                 myPanel.colorArray[myPanel.mouseDownGridX][j + 1] = newColor;
+                                 myPanel.colorArray[gridX][j] = newColor;
 
                                  myPanel.repaint();
 
@@ -295,18 +295,70 @@ public class MyMouseAdapter extends MouseAdapter {
 
 						
 
-						
+						else if (gridX == 0 && gridY == 10){
+							
+							for (int i = 4; i <= 6; i++) {
+								for (int j = 4; j <= 6; j++) {
+								Color newColor = null;
+								
+								switch (generator.nextInt(5)) {
+								
+								case 0:
+									newColor = Color.YELLOW;
+									break;
+								case 1:
+									newColor = Color.MAGENTA;
+									break;
+								case 2:
+									newColor = Color.BLACK;
+									break;
+								case 3:
+									newColor = new Color(0x964B00);   //Brown (from http://simple.wikipedia.org/wiki/List_of_colors)
+									break;
+								case 4:
+									newColor = new Color(0xB57EDC);   //Lavender (from http://simple.wikipedia.org/wiki/List_of_colors)
+									break;
+								}
+								myPanel.colorArray[i][j] = newColor;
+								myPanel.repaint();
+								}
+							}
+}
 
 						
-
 						
-
 						
-
+						else  {
+							for (int i = 1; i < 10; i++) {
+								Color newColor = null;
+								
+								switch (generator.nextInt(5)) {
+								
+								case 0:
+									newColor = Color.YELLOW;
+									break;
+								case 1:
+									newColor = Color.MAGENTA;
+									break;
+								case 2:
+									newColor = Color.BLACK;
+									break;
+								case 3:
+									newColor = new Color(0x964B00);   //Brown (from http://simple.wikipedia.org/wiki/List_of_colors)
+									break;
+								case 4:
+									newColor = new Color(0xB57EDC);   //Lavender (from http://simple.wikipedia.org/wiki/List_of_colors)
+									break;
+								}
+								myPanel.colorArray[i][i] = newColor;
+								myPanel.repaint();
+							}
+						}
+						}
 						
-
+					
+	
 						
-
 						
 
 						
@@ -420,7 +472,7 @@ public class MyMouseAdapter extends MouseAdapter {
 
 		case 3:		//Right mouse button
 
-			//Do nothing 
+			//THE FINAL QUESTION!!!!!
 
 			break;
 
